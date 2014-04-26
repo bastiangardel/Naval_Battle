@@ -1,0 +1,18 @@
+import javax.swing.SwingUtilities;
+
+import view.UIHome;
+
+
+public class Naval_Battle
+{
+	public static void main(String[] args)
+	{
+		SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                UIHome home = new UIHome();
+                home.setVisible(true);
+            }
+        });
+	}
+}

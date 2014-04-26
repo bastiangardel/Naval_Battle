@@ -1,0 +1,14 @@
+
+public class Naval_Battle
+{
+	public static void main(String[] args)
+	{
+		SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                SimpleExample ex = new SimpleExample();
+                ex.setVisible(true);
+            }
+        });
+	}
+}

@@ -1,0 +1,16 @@
+package view;
+
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+
+public class JFrameWithBGimg extends JFrame
+{
+	private BufferedImage bgImg;
+	
+	public JFrameWithBGimg(String path)
+	{
+		bgImg = ImageIO.read(new File("/path/to/some/image"));
+	}
+}
