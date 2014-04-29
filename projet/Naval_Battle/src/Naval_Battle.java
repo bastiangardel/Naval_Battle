@@ -4,16 +4,24 @@ import javax.swing.SwingUtilities;
 
 import view.UIAskPass;
 import view.UIHome;
+import view.UIManualConnect;
+import view.UIUsernameConf;
+import view.UIWaitPlayers;
 
 public class Naval_Battle
 {
 	private static void displayHomeGUI() throws IOException
 	{
-        // UIHome home = new UIHome();
-        // home.setVisible(true);
+        UIHome home = new UIHome();
+        home.setVisible(true);
         UIAskPass askpass = new UIAskPass();
         askpass.setVisible(true);
-        
+		UIWaitPlayers waitplayers = new UIWaitPlayers("testServer", "testIpAdr");
+		waitplayers.setVisible(true);
+		UIManualConnect manualconnect = new UIManualConnect();
+		manualconnect.setVisible(true);
+		UIUsernameConf usernameconf = new UIUsernameConf();
+		usernameconf.setVisible(true);
 	}
 	
 	public static void main(String[] args)

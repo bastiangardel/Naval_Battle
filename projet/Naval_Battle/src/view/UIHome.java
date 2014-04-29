@@ -23,6 +23,12 @@ public class UIHome extends JFrameWithBGimg
 {
 	private static final long serialVersionUID = 1433671331229689918L;
 	
+	private static final String UI_NAME = "ui_home";
+	private static final String CREATE_GAME = "Créer une partie";
+	private static final String SERVER_STATS = "Statistiques du serveur";
+	private static final String LIST_SERVERS = "Afficher la liste des serveurs";
+	private static final String QUIT = "Quitter";
+	
 	private JButtonDesign buttonCreate;
 	
 	public UIHome() throws IOException
@@ -66,13 +72,13 @@ public class UIHome extends JFrameWithBGimg
 		// space on top
 		pane.add(Box.createRigidArea(new Dimension(0, 320)));
 		
-		buttonCreate = addCenteredButton("Create a game", pane);
+		buttonCreate = addCenteredButton(CREATE_GAME, pane);
 		pane.add(Box.createRigidArea(new Dimension(0, 10))); // space between buttons
-		JButtonDesign buttonStats = addCenteredButton("Server statistics", pane);
+		JButtonDesign buttonStats = addCenteredButton(SERVER_STATS, pane);
 		pane.add(Box.createRigidArea(new Dimension(0, 10))); // space between buttons		
-		JButtonDesign buttonList = addCenteredButton("Display the list of servers", pane);
+		JButtonDesign buttonList = addCenteredButton(LIST_SERVERS, pane);
 		pane.add(Box.createRigidArea(new Dimension(0, 20))); // space between buttons
-		JButtonDesign buttonExit = new JButtonDesign("Quit");
+		JButtonDesign buttonExit = new JButtonDesign(QUIT);
 		buttonExit.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pane.add(buttonExit);
 		
@@ -81,11 +87,11 @@ public class UIHome extends JFrameWithBGimg
 		buttonList.setActionCommand("list");
 		buttonExit.setActionCommand("quit");
 		
-		ActionListener AL = new ALHome(this);
-		buttonCreate.addActionListener(AL);
-		buttonStats.addActionListener(AL);
-		buttonList.addActionListener(AL);
-		buttonExit.addActionListener(AL);
+		ActionListener al = new ALHome(this);
+		buttonCreate.addActionListener(al);
+		buttonStats.addActionListener(al);
+		buttonList.addActionListener(al);
+		buttonExit.addActionListener(al);
 	}
 	
 	private JButtonDesign addCenteredButton(String text, Container container)

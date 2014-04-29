@@ -31,6 +31,7 @@ public class ALHome implements ActionListener
 	        	 System.out.println("button list servers clicked");
 	             break;
 	         case "quit":
+	        	 System.out.println("button quit clicked");
 	        	 System.exit(0);
 	        	 break;
 	         default:

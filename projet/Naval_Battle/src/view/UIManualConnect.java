@@ -1,5 +1,87 @@
 package view;
 
-public class UIManualConnect {
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import view.actionListeners.ALManualConnect;
+import view.customSwingComp.JButtonDesign;
+//import view.customSwingComp.JFrameWithBGimg;
+import view.utils.ComponentMover;
+
+public class UIManualConnect extends JFrame
+{
+	private static final long serialVersionUID = -5809380707006840995L;
+	
+	private static final String UI_NAME = "ui_manualconnect";
+	private static final String IP_ADRESS = "Adresse IP ou nom d'hôte du serveur: ";
+	private static final String CONNECT = "Connecter";
+	private static final String CANCEL = "Annuler";
+	
+	public UIManualConnect() throws IOException {
+		initUI();
+	}
+	
+	private void initUI()
+	{
+		// frame settings
+	    setResizable(false);
+	    setUndecorated(true);
+	    
+	    // contents
+//	    JLabel pane = getBG();
+	    JPanel pane = new JPanel();
+        setContentPane(pane);
+	    addComponents(pane);
+        
+		new ComponentMover(this, this.getContentPane());
+        
+        pack();
+	    setLocationRelativeTo(null);
+	}
+	
+	private void addComponents(JPanel pane)
+	{
+		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+		
+		// contour
+		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
+		
+		JPanel firstLine = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel ipAdrText = new JLabel(IP_ADRESS);
+		JTextField ipAdrField = new JTextField(20);
+		ipAdrText.setLabelFor(ipAdrField);
+		firstLine.add(ipAdrText);
+		firstLine.add(ipAdrField);
+		
+		JPanel secondLine = new JPanel();
+		JButtonDesign buttonConnect = new JButtonDesign(CONNECT);
+		JButtonDesign buttonCancel= new JButtonDesign(CANCEL);
+		secondLine.add(buttonConnect);
+		secondLine.add(buttonCancel);
+		
+		firstLine.setAlignmentX(Component.LEFT_ALIGNMENT);
+		secondLine.setAlignmentX(Component.LEFT_ALIGNMENT);
+		
+		pane.add(firstLine);
+		pane.add(secondLine);
+
+		buttonConnect.setActionCommand("connect");
+		buttonCancel.setActionCommand("cancel");
+		
+		ActionListener al = new ALManualConnect();
+		buttonConnect.addActionListener(al);
+		buttonCancel.addActionListener(al);
+		
+		pane.getRootPane().setDefaultButton(buttonConnect);
+	}
 }

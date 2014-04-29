@@ -20,11 +20,17 @@ import view.utils.ComponentMover;
 
 public class UIAskPass extends JFrame
 {
+	private static final long serialVersionUID = 3263451715909934219L;
+
+	private static final String UI_NAME = "ui_askpass";
+	private static final String SERVER_NEEDS_PASS = "Ce serveur nécessite un mot de passe pour s'y connecter.";
+	private static final String PASSWORD = "Mot de passe: ";
+	private static final String CONNECT = "Connecter";
+	private static final String CANCEL = "Annuler";
+	
 	public UIAskPass() throws IOException {
 		initUI();
 	}
-
-	private static final long serialVersionUID = 3263451715909934219L;
 	
 	private void initUI()
 	{
@@ -38,8 +44,7 @@ public class UIAskPass extends JFrame
         setContentPane(pane);
 	    addComponents(pane);
         
-        @SuppressWarnings("unused")
-		ComponentMover cm = new ComponentMover(this, this.getContentPane());
+	    new ComponentMover(this, this.getContentPane());
         
         pack();
 	    setLocationRelativeTo(null);
@@ -53,19 +58,19 @@ public class UIAskPass extends JFrame
 		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
 		
 		JPanel firstLine = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel firstLineText = new JLabel("Ce serveur nécessite un mot de passe pour s'y connecter.");
+		JLabel firstLineText = new JLabel(SERVER_NEEDS_PASS);
 		firstLine.add(firstLineText);
 		
 		JPanel secondLine = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel passText = new JLabel("Mot de passe: ");
+		JLabel passText = new JLabel(PASSWORD);
 		JPasswordField passField = new JPasswordField(20);
 		passText.setLabelFor(passField);
 		secondLine.add(passText);
 		secondLine.add(passField);
 		
 		JPanel thirdLine = new JPanel();
-		JButtonDesign buttonConnect = new JButtonDesign("Connecter");
-		JButtonDesign buttonCancel= new JButtonDesign("Annuler");
+		JButtonDesign buttonConnect = new JButtonDesign(CONNECT);
+		JButtonDesign buttonCancel= new JButtonDesign(CANCEL);
 		thirdLine.add(buttonConnect);
 		thirdLine.add(buttonCancel);
 		
@@ -80,9 +85,9 @@ public class UIAskPass extends JFrame
 		buttonConnect.setActionCommand("connect");
 		buttonCancel.setActionCommand("cancel");
 		
-		ActionListener AL = new ALAskPass();
-		buttonConnect.addActionListener(AL);
-		buttonCancel.addActionListener(AL);
+		ActionListener al = new ALAskPass();
+		buttonConnect.addActionListener(al);
+		buttonCancel.addActionListener(al);
 		
 		pane.getRootPane().setDefaultButton(buttonConnect);
 	}

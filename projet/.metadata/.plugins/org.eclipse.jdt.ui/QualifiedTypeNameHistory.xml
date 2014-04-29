@@ -4,7 +4,6 @@
 <fullyQualifiedTypeName name="java.awt.Container"/>
 <fullyQualifiedTypeName name="javax.swing.BoxLayout"/>
 <fullyQualifiedTypeName name="java.awt.Component"/>
-<fullyQualifiedTypeName name="java.awt.Dimension"/>
 <fullyQualifiedTypeName name="javax.swing.Box"/>
 <fullyQualifiedTypeName name="java.awt.Insets"/>
 <fullyQualifiedTypeName name="javax.swing.border.EmptyBorder"/>
@@ -31,11 +30,19 @@
 <fullyQualifiedTypeName name="view.customSwingComp.JFrameWithBGimg"/>
 <fullyQualifiedTypeName name="javax.swing.JPasswordField"/>
 <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
-<fullyQualifiedTypeName name="javax.swing.JPanel"/>
 <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
-<fullyQualifiedTypeName name="view.customSwingComp.JButtonDesign"/>
 <fullyQualifiedTypeName name="view.UIAskPass"/>
 <fullyQualifiedTypeName name="view.actionListeners.ALAskPass"/>
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="view.customSwingComp.JButtonDesign"/>
+<fullyQualifiedTypeName name="view.actionListeners.ALWaitPlayers"/>
+<fullyQualifiedTypeName name="view.UIWaitPlayers"/>
+<fullyQualifiedTypeName name="java.awt.Dimension"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="javax.swing.JTextField"/>
+<fullyQualifiedTypeName name="view.actionListeners.ALManualConnect"/>
+<fullyQualifiedTypeName name="view.UIManualConnect"/>
+<fullyQualifiedTypeName name="view.actionListeners.ALUsernameConf"/>
+<fullyQualifiedTypeName name="view.UIUsernameConf"/>
 </qualifiedTypeNameHistroy>

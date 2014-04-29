@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
@@ -9,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import view.actionListeners.ALWaitPlayers;
+import view.customSwingComp.JButtonDesign;
 import view.utils.ComponentMover;
 
 public class UIWaitPlayers extends JFrame
@@ -42,8 +46,7 @@ public class UIWaitPlayers extends JFrame
         setContentPane(pane);
 	    addComponents(pane);
 	    
-	    @SuppressWarnings("unused")
-		ComponentMover cm = new ComponentMover(this, this.getContentPane());
+	    new ComponentMover(this, this.getContentPane());
 	    
 	    pack();
 	    setLocationRelativeTo(null);
@@ -56,8 +59,29 @@ public class UIWaitPlayers extends JFrame
 		// contour
 		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
 		
-		JLabel firstLine = new JLabel(YOU_ARE_CONNECTED_TO + serverName + ON + IPAdress);
-//		JLabel 
+		JPanel firstLine = new JPanel();
+		JLabel firstLineText = new JLabel(YOU_ARE_CONNECTED_TO + " " + serverName + " " + ON + " " + IPAdress);
+		firstLine.add(firstLineText);
 		
+		JPanel secondLine = new JPanel();
+		JLabel secondLineText = new JLabel(PLEASE_WAIT);
+		secondLine.add(secondLineText);
+
+		JPanel thirdLine = new JPanel();
+		JButtonDesign buttonDisconnect = new JButtonDesign(DISCONNECT);
+		thirdLine.add(buttonDisconnect);
+		
+		firstLine.setAlignmentX(Component.CENTER_ALIGNMENT);
+		secondLine.setAlignmentX(Component.CENTER_ALIGNMENT);
+		buttonDisconnect.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		pane.add(firstLine);
+		pane.add(secondLine);
+		pane.add(thirdLine);
+		
+		buttonDisconnect.setActionCommand("disconnect");
+		
+		ALWaitPlayers al = new ALWaitPlayers();
+		buttonDisconnect.addActionListener(al);
 	}
 }
