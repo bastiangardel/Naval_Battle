@@ -1,0 +1,20 @@
+package view;
+
+import java.io.IOException;
+
+import javax.swing.JFrame;
+
+public class UIWaitPlayers extends JFrame
+{
+	private static final long serialVersionUID = -739742586451537622L;
+
+	public UIWaitPlayers() throws IOException
+	{
+		initUI();
+	}
+	
+	private void initUI()
+	{
+		
+	}
+}

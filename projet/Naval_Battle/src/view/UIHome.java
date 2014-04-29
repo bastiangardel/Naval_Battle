@@ -46,9 +46,9 @@ public class UIHome extends JFrameWithBGimg
 	    
 	    // contents
 	    JLabel pane = getBG();
-	    addComponents(pane);
         setContentPane(pane);
-        
+	    addComponents(pane);
+	    
         @SuppressWarnings("unused")
 		ComponentMover cm = new ComponentMover(this, this.getContentPane());
         

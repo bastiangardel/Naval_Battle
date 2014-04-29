@@ -1,0 +1,39 @@
+package view;
+
+import java.io.IOException;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import view.utils.ComponentMover;
+
+public class UIWaitPlayers extends JFrame
+{
+	private static final long serialVersionUID = -739742586451537622L;
+
+	public UIWaitPlayers() throws IOException
+	{
+		initUI();
+	}
+	
+	private void initUI()
+	{
+		// frame settings
+	    setResizable(false);
+	    setUndecorated(true);
+	    
+	    // contents
+	    JPanel pane = new JPanel();
+        setContentPane(pane);
+	    addComponents(pane);
+	    
+	    @SuppressWarnings("unused")
+		ComponentMover cm = new ComponentMover(this, this.getContentPane());
+	    
+	    pack();
+	    setLocationRelativeTo(null);
+	}
+	
+	private void addComponents(JPanel pane)
+	{
+}

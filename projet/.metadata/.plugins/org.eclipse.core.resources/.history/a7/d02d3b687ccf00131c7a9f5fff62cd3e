@@ -1,0 +1,98 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.UIManager;
+
+import view.actionListeners.ALHome;
+import view.customSwingComp.JButtonDesign;
+import view.customSwingComp.JFrameWithBGimg;
+import view.utils.ComponentMover;
+
+public class UIAskPass extends JFrame
+{
+	public UIAskPass() throws IOException {
+		initUI();
+	}
+
+	private static final long serialVersionUID = 3263451715909934219L;
+	
+	private void initUI()
+	{
+		// frame settings
+	    setResizable(false);
+	    setUndecorated(true);
+	    
+	    // contents
+//	    JLabel pane = getBG();
+	    JPanel pane = new JPanel();
+	    addComponents(pane);
+        setContentPane(pane);
+        
+        @SuppressWarnings("unused")
+		ComponentMover cm = new ComponentMover(this, this.getContentPane());
+        
+        pack();
+	    setLocationRelativeTo(null);
+	}
+	
+	private void addComponents(JPanel pane)
+	{
+		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+		
+		// contour
+		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
+		
+		JPanel firstLine = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel firstLineText = new JLabel("Ce serveur nécessite un mot de passe pour s'y connecter.");
+		firstLine.add(firstLineText);
+		
+		JPanel secondLine = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel passText = new JLabel("Mot de passe: ");
+		JPasswordField passField = new JPasswordField(15);
+		passText.setLabelFor(passField);
+		secondLine.add(passText);
+		secondLine.add(passField);
+		
+		JPanel thirdLine = new JPanel();
+		JButtonDesign buttonConnect = new JButtonDesign("Connecter");
+		JButtonDesign buttonCancel= new JButtonDesign("Annuler");
+		thirdLine.add(buttonConnect);
+		thirdLine.add(buttonCancel);
+		
+		firstLine.setAlignmentX(Component.LEFT_ALIGNMENT);
+		secondLine.setAlignmentX(Component.LEFT_ALIGNMENT);
+		thirdLine.setAlignmentX(Component.LEFT_ALIGNMENT);
+		
+		pane.add(firstLine);
+		pane.add(secondLine);
+		pane.add(thirdLine);
+
+//		
+//		buttonCreate.setActionCommand("create");
+//		buttonStats.setActionCommand("stats");
+//		buttonList.setActionCommand("list");
+//		buttonExit.setActionCommand("quit");
+//		
+//		ActionListener AL = new ALHome(this);
+//		buttonCreate.addActionListener(AL);
+//		buttonStats.addActionListener(AL);
+//		buttonList.addActionListener(AL);
+//		buttonExit.addActionListener(AL);
+	}
+}
