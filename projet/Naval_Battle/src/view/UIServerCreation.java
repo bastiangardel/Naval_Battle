@@ -1,5 +1,6 @@
 package view;
 
-public class UIServerCreation {
+public class UIServerCreation
+{
 
 }
