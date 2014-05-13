@@ -3,6 +3,7 @@ import java.io.IOException;
 import javax.swing.SwingUtilities;
 
 import view.UIAskPass;
+import view.UIGameMain;
 import view.UIHome;
 import view.UIManualConnect;
 import view.UIUsernameConf;
@@ -22,6 +23,8 @@ public class Naval_Battle
 		manualconnect.setVisible(true);
 		UIUsernameConf usernameconf = new UIUsernameConf();
 		usernameconf.setVisible(true);
+		UIGameMain gamemain = new UIGameMain();
+		gamemain.setVisible(true);
 	}
 	
 	public static void main(String[] args)
