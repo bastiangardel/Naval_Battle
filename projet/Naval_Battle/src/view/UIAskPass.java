@@ -55,7 +55,7 @@ public class UIAskPass extends JFrame
 		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 		
 		// contour
-		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
+		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
 		
 		JPanel firstLine = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel firstLineText = new JLabel(SERVER_NEEDS_PASS);

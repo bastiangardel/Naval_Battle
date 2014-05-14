@@ -67,7 +67,7 @@ public class UIHome extends JFrameWithBGimg
 		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 		
 		// contour
-		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
+		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
 		
 		// space on top
 		pane.add(Box.createRigidArea(new Dimension(0, 320)));

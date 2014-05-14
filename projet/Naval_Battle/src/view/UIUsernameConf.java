@@ -17,6 +17,7 @@ import view.actionListeners.ALUsernameConf;
 import view.customSwingComp.JButtonDesign;
 //import view.customSwingComp.JFrameWithBGimg;
 import view.utils.ComponentMover;
+import view.utils.JTextFieldLimit;
 
 public class UIUsernameConf extends JFrame
 {
@@ -54,11 +55,12 @@ public class UIUsernameConf extends JFrame
 		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 		
 		// contour
-		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
+		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
 		
 		JPanel firstLine = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel nicknameText = new JLabel(NEW_NICKNAME);
 		JTextField nicknameField = new JTextField(20);
+		nicknameField.setDocument(new JTextFieldLimit(20));
 		nicknameText.setLabelFor(nicknameField);
 		firstLine.add(nicknameText);
 		firstLine.add(nicknameField);

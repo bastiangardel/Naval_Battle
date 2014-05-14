@@ -57,7 +57,7 @@ public class UIWaitPlayers extends JFrame
 		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 		
 		// contour
-		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
+		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
 		
 		JPanel firstLine = new JPanel();
 		JLabel firstLineText = new JLabel(YOU_ARE_CONNECTED_TO + " " + serverName + " " + ON + " " + IPAdress);

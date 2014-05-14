@@ -17,6 +17,7 @@ import view.actionListeners.ALManualConnect;
 import view.customSwingComp.JButtonDesign;
 //import view.customSwingComp.JFrameWithBGimg;
 import view.utils.ComponentMover;
+import view.utils.JTextFieldLimit;
 
 public class UIManualConnect extends JFrame
 {
@@ -54,11 +55,12 @@ public class UIManualConnect extends JFrame
 		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 		
 		// contour
-		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
+		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
 		
 		JPanel firstLine = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel ipAdrText = new JLabel(IP_ADRESS);
 		JTextField ipAdrField = new JTextField(20);
+		ipAdrField.setDocument(new JTextFieldLimit(20));
 		ipAdrText.setLabelFor(ipAdrField);
 		firstLine.add(ipAdrText);
 		firstLine.add(ipAdrField);
