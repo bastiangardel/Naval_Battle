@@ -1,15 +1,9 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -179,7 +173,7 @@ public class UIServerCreation extends JFrame implements ItemListener
 		buttonCreate.setActionCommand("create");
 		buttonCancel.setActionCommand("cancel");
 		
-		ActionListener al = new ALServerCreation(this);
+		ActionListener al = new ALServerCreation();
 		buttonCreate.addActionListener(al);
 		buttonCancel.addActionListener(al);
 		

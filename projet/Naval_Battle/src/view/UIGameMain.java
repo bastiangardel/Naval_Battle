@@ -1,16 +1,27 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
+import view.actionListeners.ALGameMain;
 import view.utils.ComponentMover;
 
 public class UIGameMain extends JFrame
@@ -18,6 +29,9 @@ public class UIGameMain extends JFrame
 	private static final long serialVersionUID = -5839340289045647964L;
 	
 	private static final String UI_NAME = "ui_gameMain";
+	private static final String SEND = "Envoyer";
+	private static final String OPPONENT_FLEET = "Flotte de l'adversaire";
+	private static final String MY_FLEET = "Ma flotte";
 	private static final int CELL_NUMBER = 16;
 	private static final int CELL_SIZE = 20;
 
@@ -50,14 +64,72 @@ public class UIGameMain extends JFrame
 	
 	private void addComponents(JPanel pane)
 	{
+		pane.setLayout(new BorderLayout());
+		
+		// contour
+		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
+		
+		JPanel opponentContainer = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel opponent = new JLabel(OPPONENT_FLEET);
+		opponent.setPreferredSize(new Dimension(enemyGrid.getPreferredSize().width, 15));
+		opponent.setHorizontalAlignment(SwingConstants.CENTER);
+		opponentContainer.add(opponent);
+		pane.add(opponentContainer, BorderLayout.NORTH);
+		
+		// boats
+		JPanel boatsAreaContainer = new JPanel();
 		JPanel boatsArea = new JPanel();
 		boatsArea.setLayout(new BoxLayout(boatsArea, BoxLayout.Y_AXIS));
 		
-		boatsArea.add(myGrid);
-		boatsArea.add(Box.createRigidArea(new Dimension(0, 10))); // space between grids
 		boatsArea.add(enemyGrid);
+		boatsArea.add(Box.createRigidArea(new Dimension(0, 20))); // space between grids
+		boatsArea.add(myGrid);
 		
-		pane.add(boatsArea);
+		boatsAreaContainer.add(boatsArea);
+		pane.add(boatsAreaContainer, BorderLayout.CENTER);
+		
+		JPanel myFleetContainer = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel myFleet = new JLabel(MY_FLEET);
+		myFleet.setPreferredSize(new Dimension(myGrid.getPreferredSize().width, 15));
+		myFleet.setHorizontalAlignment(SwingConstants.CENTER);
+		myFleetContainer.add(myFleet);
+		pane.add(myFleetContainer, BorderLayout.SOUTH);
+		
+		// chat
+		JPanel chatPaneContainer = new JPanel();
+		JPanel chatPane = new JPanel(new BorderLayout());
+		JTextArea chatText = new JTextArea("sgvfcac"
+				+ "cacadff"
+				+ "afd cfs"
+				+ "avffavf"
+				+ "jfbsfj avfa"
+				+ "vfaffvdaf"
+				+ "mafv safnm"
+				+ "asfamsvf"
+				+ " mvfmfv");
+		chatText.setLineWrap(true);
+		chatText.setEditable(false);
+		JScrollPane chatTextPane = new JScrollPane(chatText,
+										JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+										JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		
+		JPanel inputPane = new JPanel(new BorderLayout());
+		JTextField chatInputField = new JTextField();
+		JButton buttonSend = new JButton(SEND);
+		inputPane.add(chatInputField, BorderLayout.CENTER);
+		inputPane.add(buttonSend, BorderLayout.EAST);
+
+		chatPane.add(chatTextPane, BorderLayout.CENTER);
+		chatPane.add(inputPane, BorderLayout.SOUTH);
+		chatPane.setPreferredSize(new Dimension(300, boatsArea.getPreferredSize().height));
+		chatPaneContainer.add(chatPane);
+		
+		pane.add(chatPaneContainer, BorderLayout.EAST);
+		
+		buttonSend.setActionCommand("send");
+		
+		ActionListener al = new ALGameMain();
+		buttonSend.addActionListener(al);
 	}
 
 	class EnemyGrid extends GridArea
@@ -66,7 +138,7 @@ public class UIGameMain extends JFrame
 
 		public EnemyGrid()
 		{
-			super("Enemy Grid", CELL_NUMBER, CELL_SIZE);
+			super(CELL_NUMBER, CELL_SIZE);
 		}
 
 		public void paintComponent(Graphics g)
@@ -98,7 +170,7 @@ public class UIGameMain extends JFrame
 
 		public MyGrid()
 		{
-			super("My Grid", CELL_NUMBER, CELL_SIZE);
+			super(CELL_NUMBER, CELL_SIZE);
 		}
 
 		public void paintComponent(Graphics g)
@@ -128,14 +200,12 @@ public class UIGameMain extends JFrame
 	{
 		private static final long serialVersionUID = 4301030987169745017L;
 		
-		private String title;
 		private int cellNumber;
 		private int cellSize;
 		private int totalSize;
 		
-		public GridArea(String title, int cellNumber, int cellSize)
+		public GridArea(int cellNumber, int cellSize)
 		{
-			this.title = title;
 			this.cellNumber = cellNumber;
 			this.cellSize = cellSize;
 			this.totalSize = cellNumber * cellSize;

@@ -14,12 +14,12 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
 
-import view.actionListeners.ALHome;
+import view.actionListeners.ALMainWindow;
 import view.customSwingComp.JButtonDesign;
 import view.customSwingComp.JFrameWithBGimg;
 import view.utils.ComponentMover;
 
-public class UIHome extends JFrameWithBGimg
+public class UIMainWindow extends JFrameWithBGimg
 {
 	private static final long serialVersionUID = 1433671331229689918L;
 	
@@ -31,7 +31,7 @@ public class UIHome extends JFrameWithBGimg
 	
 	private JButtonDesign buttonCreate;
 	
-	public UIHome() throws IOException
+	public UIMainWindow() throws IOException
 	{
 		super("pictures/backgrounds/HomeBackground.jpg", 411, 500);
 		initUI();
@@ -87,7 +87,7 @@ public class UIHome extends JFrameWithBGimg
 		buttonList.setActionCommand("list");
 		buttonExit.setActionCommand("quit");
 		
-		ActionListener al = new ALHome(this);
+		ActionListener al = new ALMainWindow(this);
 		buttonCreate.addActionListener(al);
 		buttonStats.addActionListener(al);
 		buttonList.addActionListener(al);

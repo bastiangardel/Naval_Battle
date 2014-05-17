@@ -3,13 +3,13 @@ package view.actionListeners;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.UIHome;
+import view.UIMainWindow;
 
-public class ALHome implements ActionListener
+public class ALMainWindow implements ActionListener
 {
-	private UIHome ui;
+	private UIMainWindow ui;
 	
-	public ALHome(UIHome ui)
+	public ALMainWindow(UIMainWindow ui)
 	{
 		this.ui = ui;
 	}
