@@ -130,6 +130,8 @@ public class UIGameMain extends JFrame
 		
 		ActionListener al = new ALGameMain();
 		buttonSend.addActionListener(al);
+		
+		pane.getRootPane().setDefaultButton(buttonSend);
 	}
 
 	class EnemyGrid extends GridArea
