@@ -22,20 +22,20 @@ public enum MapSize {
 }
 
 class Boat {
-	int nbr;
+	int count;
 	BoatType type;
 
 	public Boat(int nbr, BoatType type) {
-		this.nbr = nbr;
+		this.count = nbr;
 		this.type = type;
 	}
 
-	public int getNbr() {
-		return nbr;
+	public int getCount() {
+		return count;
 	}
 
-	public void setNbr(int nbr) {
-		this.nbr = nbr;
+	public void setCount(int nbr) {
+		this.count = nbr;
 	}
 
 	public BoatType getType() {
