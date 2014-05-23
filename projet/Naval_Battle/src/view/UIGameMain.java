@@ -8,6 +8,7 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -32,7 +33,7 @@ public class UIGameMain extends JFrame
 	private static final String SEND = "Envoyer";
 	private static final String OPPONENT_FLEET = "Flotte de l'adversaire";
 	private static final String MY_FLEET = "Ma flotte";
-	private static final int CELL_NUMBER = 16;
+	private static final int CELL_NUMBER = 7;
 	private static final int CELL_SIZE = 20;
 
 	private MyGrid myGrid;
@@ -134,7 +135,7 @@ public class UIGameMain extends JFrame
 		pane.getRootPane().setDefaultButton(buttonSend);
 	}
 
-	class EnemyGrid extends GridArea
+	private class EnemyGrid extends GridArea
 	{
 		private static final long serialVersionUID = -6389260975774544829L;
 
@@ -166,7 +167,7 @@ public class UIGameMain extends JFrame
 		}
 	}
 	
-	class MyGrid extends GridArea
+	private class MyGrid extends GridArea
 	{
 		private static final long serialVersionUID = -1824922420293740009L;
 
@@ -198,19 +199,21 @@ public class UIGameMain extends JFrame
 		}
 	}
 	
-	class GridArea  extends JPanel
+	private class GridArea  extends JPanel
 	{
 		private static final long serialVersionUID = 4301030987169745017L;
 		
 		private int cellNumber;
 		private int cellSize;
 		private int totalSize;
+		private int model[][];
 		
-		public GridArea(int cellNumber, int cellSize)
+		public GridArea(int cellNumber, int cellSize, int model[][])
 		{
 			this.cellNumber = cellNumber;
 			this.cellSize = cellSize;
 			this.totalSize = cellNumber * cellSize;
+			this.model = model;
 			setOpaque(false);
 		}
 
@@ -240,6 +243,11 @@ public class UIGameMain extends JFrame
 			}
 			g2.setColor(Color.black);
 			g2.draw3DRect(0, 0, totalSize, totalSize, false);
+		}
+		
+		private class MouseHandler extends MouseAdapter
+		{
+			
 		}
 	}
 }
