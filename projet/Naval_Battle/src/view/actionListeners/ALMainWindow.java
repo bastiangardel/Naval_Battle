@@ -30,6 +30,9 @@ public class ALMainWindow implements ActionListener
 	         case "list":
 	        	 System.out.println("button list servers clicked");
 	             break;
+	         case "nick":
+	        	 System.out.println("button change nick clicked");
+	        	 break;
 	         case "quit":
 	        	 System.out.println("button quit clicked");
 	        	 System.exit(0);

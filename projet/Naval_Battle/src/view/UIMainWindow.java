@@ -27,6 +27,7 @@ public class UIMainWindow extends JFrameWithBGimg
 	private static final String CREATE_GAME = "Créer une partie";
 	private static final String SERVER_STATS = "Statistiques du serveur";
 	private static final String LIST_SERVERS = "Afficher la liste des serveurs";
+	private static final String CHANGE_NICK = "Modifier le pseudonyme";
 	private static final String QUIT = "Quitter";
 	
 	private JButtonDesign buttonCreate;
@@ -70,14 +71,16 @@ public class UIMainWindow extends JFrameWithBGimg
 		pane.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
 		
 		// space on top
-		pane.add(Box.createRigidArea(new Dimension(0, 320)));
+		pane.add(Box.createRigidArea(new Dimension(0, 300)));
 		
 		buttonCreate = addCenteredButton(CREATE_GAME, pane);
 		pane.add(Box.createRigidArea(new Dimension(0, 10))); // space between buttons
 		JButtonDesign buttonStats = addCenteredButton(SERVER_STATS, pane);
 		pane.add(Box.createRigidArea(new Dimension(0, 10))); // space between buttons		
 		JButtonDesign buttonList = addCenteredButton(LIST_SERVERS, pane);
-		pane.add(Box.createRigidArea(new Dimension(0, 20))); // space between buttons
+		pane.add(Box.createRigidArea(new Dimension(0, 10))); // space between buttons
+		JButtonDesign buttonChangeNick = addCenteredButton(CHANGE_NICK, pane);
+		pane.add(Box.createRigidArea(new Dimension(0, 10))); // space between buttons
 		JButtonDesign buttonExit = new JButtonDesign(QUIT);
 		buttonExit.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pane.add(buttonExit);
@@ -85,12 +88,14 @@ public class UIMainWindow extends JFrameWithBGimg
 		buttonCreate.setActionCommand("create");
 		buttonStats.setActionCommand("stats");
 		buttonList.setActionCommand("list");
+		buttonChangeNick.setActionCommand("nick");
 		buttonExit.setActionCommand("quit");
 		
 		ActionListener al = new ALMainWindow(this);
 		buttonCreate.addActionListener(al);
 		buttonStats.addActionListener(al);
 		buttonList.addActionListener(al);
+		buttonChangeNick.addActionListener(al);
 		buttonExit.addActionListener(al);
 	}
 	

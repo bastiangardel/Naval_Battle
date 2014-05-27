@@ -251,8 +251,12 @@ public class UIGameMain extends JFrame
 		{
 			if (horizontalPlacement)
 			{
-				if (cursorLocation.x + boat.getNbrcase() > CELL_NUMBER)
+				if ((cursorLocation.x - 1) + boat.getNbrcase()*cellSize > totalSize)
 					return false;
+
+				for (int i = 0; i < boat.getNbrcase(); ++i)
+					if (playField[(cursorLocation.x + i][cursorLocation.y] != 0)
+						return false;
 			}
 			else
 			{
