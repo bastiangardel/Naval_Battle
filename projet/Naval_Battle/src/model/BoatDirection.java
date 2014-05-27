@@ -1,5 +1,5 @@
 package model;
 
-public enum boatDirection {
+public enum BoatDirection {
 	HORIZONTAL,VERTICAL
 }

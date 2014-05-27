@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
@@ -22,6 +23,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import model.BoatType;
 import view.actionListeners.ALGameMain;
 import view.utils.ComponentMover;
 
@@ -206,14 +208,14 @@ public class UIGameMain extends JFrame
 		private int cellNumber;
 		private int cellSize;
 		private int totalSize;
-		private int model[][];
+		private int[][] playField;
 		
-		public GridArea(int cellNumber, int cellSize, int model[][])
+		public GridArea(int cellNumber, int cellSize, int[][] playField)
 		{
 			this.cellNumber = cellNumber;
 			this.cellSize = cellSize;
 			this.totalSize = cellNumber * cellSize;
-			this.model = model;
+			this.playField = playField;
 			setOpaque(false);
 		}
 
@@ -243,6 +245,19 @@ public class UIGameMain extends JFrame
 			}
 			g2.setColor(Color.black);
 			g2.draw3DRect(0, 0, totalSize, totalSize, false);
+		}
+		
+		private boolean validPlacement(Point cursorLocation, BoatType boat)
+		{
+			if (horizontalPlacement)
+			{
+				if (cursorLocation.x + boat.getNbrcase() > CELL_NUMBER)
+					return false;
+			}
+			else
+			{
+				
+			}
 		}
 		
 		private class MouseHandler extends MouseAdapter
