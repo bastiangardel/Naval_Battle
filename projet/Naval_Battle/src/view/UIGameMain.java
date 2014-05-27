@@ -7,7 +7,9 @@ import java.awt.FlowLayout;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -21,6 +23,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import model.BoatType;
 import view.actionListeners.ALGameMain;
 import view.utils.ComponentMover;
 
@@ -32,7 +35,7 @@ public class UIGameMain extends JFrame
 	private static final String SEND = "Envoyer";
 	private static final String OPPONENT_FLEET = "Flotte de l'adversaire";
 	private static final String MY_FLEET = "Ma flotte";
-	private static final int CELL_NUMBER = 16;
+	private static final int CELL_NUMBER = 7;
 	private static final int CELL_SIZE = 20;
 
 	private MyGrid myGrid;
@@ -134,7 +137,7 @@ public class UIGameMain extends JFrame
 		pane.getRootPane().setDefaultButton(buttonSend);
 	}
 
-	class EnemyGrid extends GridArea
+	private class EnemyGrid extends GridArea
 	{
 		private static final long serialVersionUID = -6389260975774544829L;
 
@@ -166,7 +169,7 @@ public class UIGameMain extends JFrame
 		}
 	}
 	
-	class MyGrid extends GridArea
+	private class MyGrid extends GridArea
 	{
 		private static final long serialVersionUID = -1824922420293740009L;
 
@@ -198,19 +201,21 @@ public class UIGameMain extends JFrame
 		}
 	}
 	
-	class GridArea  extends JPanel
+	private class GridArea  extends JPanel
 	{
 		private static final long serialVersionUID = 4301030987169745017L;
 		
 		private int cellNumber;
 		private int cellSize;
 		private int totalSize;
+		private int[][] playField;
 		
-		public GridArea(int cellNumber, int cellSize)
+		public GridArea(int cellNumber, int cellSize, int[][] playField)
 		{
 			this.cellNumber = cellNumber;
 			this.cellSize = cellSize;
 			this.totalSize = cellNumber * cellSize;
+			this.playField = playField;
 			setOpaque(false);
 		}
 
@@ -240,6 +245,24 @@ public class UIGameMain extends JFrame
 			}
 			g2.setColor(Color.black);
 			g2.draw3DRect(0, 0, totalSize, totalSize, false);
+		}
+		
+		private boolean validPlacement(Point cursorLocation, BoatType boat)
+		{
+			if (horizontalPlacement)
+			{
+				if (cursorLocation.x + boat.getNbrcase() > CELL_NUMBER)
+					return false;
+			}
+			else
+			{
+				
+			}
+		}
+		
+		private class MouseHandler extends MouseAdapter
+		{
+			
 		}
 	}
 }
